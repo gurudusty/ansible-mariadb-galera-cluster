@@ -35,6 +35,22 @@ slow_query_log
 long_query_time = {{ mariadb_long_query_time }}
 {% endif %}
 
+{% if mariadb_performance_schema | default('auto') != "auto" %}
+performance_schema  = {{ mariadb_performance_schema }}
+{% endif %}
+{% if mariadb_performance_schema_instrument | default('auto') != "auto" %}
+performance-schema-instrument  = '{{ mariadb_performance_schema_instrument }}'
+{% endif %}
+{% if mariadb_performance_schema_consumer_events_stages_current | default('auto') != "auto" %}
+performance-schema-consumer-events-stages-current  = {{ mariadb_performance_schema_consumer_events_stages_current }}
+{% endif %}
+{% if mariadb_performance_schema_consumer_events_stages_history | default('auto') != "auto" %}
+performance-schema-consumer-events-stages-history  = {{ mariadb_performance_schema_consumer_events_stages_history }}
+{% endif %}
+{% if mariadb_performance_schema_consumer_events_stages_history_long | default('auto') != "auto" %}
+performance-schema-consumer-events-stages-history-long  = {{ mariadb_performance_schema_consumer_events_stages_history_long }}
+{% endif %}
+
 {% if mariadb_tls_files and mariadb_tls_files|length == 3 %}
 ssl_ca = {{ mariadb_certificates_dir }}/{{ mariadb_tls_files.ca_cert.name }}
 ssl_cert = {{ mariadb_certificates_dir }}/{{ mariadb_tls_files.server_cert.name }}

@@ -49,6 +49,26 @@ mariadb_mysql_settings:
   # MariaDB default: https://mariadb.com/kb/en/server-system-variables/#thread_cache_size
   thread_cache_size: 256
 
+# Define performance schema settings
+# https://mariadb.com/kb/en/performance-schema-overview/#enabling-the-performance-schema
+# Example settings to enable performance schema
+# mariadb_performance_schema: "ON"
+# mariadb_performance_schema_instrument: "stage/%=ON"
+# mariadb_performance_schema_consumer_events_stages_current: "ON"
+# mariadb_performance_schema_consumer_events_stages_history: "ON"
+# mariadb_performance_schema_consumer_events_stages_history_long: "ON"
+
+# Role default: unset (server defaults: OFF)
+mariadb_performance_schema: "auto"
+# Role default: unset
+mariadb_performance_schema_instrument: "auto" # this will be wrapped with single quotes
+# Role default: unset
+mariadb_performance_schema_consumer_events_stages_current: "auto"
+# Role default: unset
+mariadb_performance_schema_consumer_events_stages_history: "auto"
+# Role default: unset
+mariadb_performance_schema_consumer_events_stages_history_long: "auto"
+
 # Define TLS certs & keys which will be used to encrypt mysql, WSREP, SST connections
 # This variable should have defined exactly three items, any other item count is handled like none.
 # Items must be named ca_cert, server_key, server_cert.  Each item must have defined values name and content.
