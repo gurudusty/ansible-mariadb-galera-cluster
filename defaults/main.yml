@@ -274,6 +274,7 @@ mariadb_mysql_users: []
 #     priv: *.*:USAGE (default}
 #     state: present (default)
 #     append_privs: no (default)
+#     update_password: always (default)
 
 # Monitoring settings
 

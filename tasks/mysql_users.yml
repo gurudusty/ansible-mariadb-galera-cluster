@@ -1,5 +1,4 @@
 ---
-
 - name: "Check if {{ mariadb_sst_username }} exists in the system"
   block:
     - name: "Check if {{ mariadb_sst_username }} exists in the system"
@@ -56,6 +55,7 @@
     tls_requires: "{{ item.0.tls_requires | default(omit) }}"
     priv: "{{ item.0.priv | default('*.*:USAGE') }}"
     state: "{{ item.0.state | default('present') }}"
+    update_password: "{{ item.0.update_password | default('always') }}"
   become: true
   no_log: true
   delegate_to: "{{ galera_mysql_first_node }}"
